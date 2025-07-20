@@ -10,12 +10,9 @@ fun Article.toEntity(): ArticleEntity {
         id = id,
         title = title.orEmpty(),
         description = description,
-        content = content ?: description.orEmpty(),
         url = link,
         urlToImage = imageUrl,
-        publishedAt = pubDate.orEmpty(),
-        sourceName = sourceId.orEmpty(),
-        sourceId = sourceId
+        sourceName = sourceName.orEmpty()
     )
 }
 
@@ -23,10 +20,7 @@ fun ArticleEntity.toArticleItem(): ArticleItem = ArticleItem(
     id = id,
     title = title,
     description = description,
-    content = content,
     url = url,
     urlToImage = urlToImage,
-    publishedAt = publishedAt,
-    sourceName = sourceName,
-    sourceId = sourceId
+    sourceName = sourceName
 )

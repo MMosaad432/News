@@ -21,6 +21,7 @@ data class Article(
     @SerializedName("pubDate") val pubDate: String?,
     @SerializedName("image_url") val imageUrl: String?,
     @SerializedName("source_id") val sourceId: String?,
+    @SerializedName("source_name") val sourceName: String?,
     @SerializedName("source_priority") val sourcePriority: Int?,
     @SerializedName("country") val country: List<String>?,
     @SerializedName("category") val category: List<String>?,
