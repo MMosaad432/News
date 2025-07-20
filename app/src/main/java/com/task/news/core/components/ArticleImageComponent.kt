@@ -30,8 +30,7 @@ fun ArticleImageComponent(urlToImage: String?) {
             contentDescription = "",
             modifier = Modifier
                 .fillMaxWidth()
-                .height(200.dp)
-                .clip(RoundedCornerShape(8.dp)),
+                .height(200.dp),
             contentScale = ContentScale.Crop,
             loading = {
                 Box(
