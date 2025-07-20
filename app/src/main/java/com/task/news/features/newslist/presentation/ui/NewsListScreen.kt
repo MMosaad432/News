@@ -15,8 +15,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.task.news.core.components.NewsTopBar
-import com.task.news.features.newslist.presentation.NewsListViewModel
+import com.task.news.features.newslist.data.model.ArticleItem
 import com.task.news.features.newslist.presentation.ui.components.NewsListItem
+import com.task.news.features.newslist.presentation.viewmodel.NewsListViewModel
 
 @Composable
 fun NewsListScreen(viewModel: NewsListViewModel = hiltViewModel()) {
@@ -47,7 +48,7 @@ fun NewsListScreen(viewModel: NewsListViewModel = hiltViewModel()) {
 }
 
 @Composable
-fun NewsListContent(news: List<String>) {
+fun NewsListContent(news: List<ArticleItem>) {
     LazyColumn(
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
