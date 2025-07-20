@@ -11,7 +11,7 @@ fun Article.toEntity(): ArticleEntity {
         title = title.orEmpty(),
         description = description,
         content = content ?: description.orEmpty(),
-        url = link.orEmpty(),
+        url = link,
         urlToImage = imageUrl,
         publishedAt = pubDate.orEmpty(),
         sourceName = sourceId.orEmpty(),

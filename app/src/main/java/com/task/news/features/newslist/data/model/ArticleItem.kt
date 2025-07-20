@@ -5,7 +5,7 @@ data class ArticleItem(
     val title: String,
     val description: String?,
     val content: String?,
-    val url: String,
+    val url: String?,
     val urlToImage: String?,
     val publishedAt: String,
     val sourceId: String?,

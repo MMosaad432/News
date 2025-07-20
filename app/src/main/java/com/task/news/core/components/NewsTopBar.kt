@@ -17,8 +17,7 @@ import androidx.compose.ui.unit.sp
 fun NewsTopBar(
     title: String,
     showBackButton: Boolean = false,
-    onBackClick: () -> Unit = {},
-    actions: @Composable () -> Unit = {}
+    onBackClick: () -> Unit = {}
 ) {
     TopAppBar(
         title = {
@@ -36,7 +35,6 @@ fun NewsTopBar(
                     )
                 }
             }
-        },
-        actions = { actions() }
+        }
     )
 }

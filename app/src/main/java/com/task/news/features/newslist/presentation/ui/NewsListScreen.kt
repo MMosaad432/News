@@ -33,7 +33,10 @@ import com.task.news.features.newslist.presentation.ui.components.NewsListItem
 import com.task.news.features.newslist.presentation.viewmodel.NewsListViewModel
 
 @Composable
-fun NewsListScreen(viewModel: NewsListViewModel = hiltViewModel()) {
+fun NewsListScreen(
+    onArticleClicked: (String) -> Unit,
+    viewModel: NewsListViewModel = hiltViewModel()
+) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     Scaffold(
         topBar = {
@@ -51,7 +54,8 @@ fun NewsListScreen(viewModel: NewsListViewModel = hiltViewModel()) {
             uiState.news?.let { news ->
                 val lazyPagingItems = news.collectAsLazyPagingItems()
                 NewsListContent(
-                    news = lazyPagingItems
+                    news = lazyPagingItems,
+                    onArticleClicked = onArticleClicked
                 )
             }
         }
@@ -59,14 +63,14 @@ fun NewsListScreen(viewModel: NewsListViewModel = hiltViewModel()) {
 }
 
 @Composable
-fun NewsListContent(news: LazyPagingItems<ArticleItem>) {
+fun NewsListContent(news: LazyPagingItems<ArticleItem>, onArticleClicked: (String) -> Unit) {
     LazyColumn(
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         items(news.itemCount) { articleIndex ->
             news[articleIndex]?.let { article ->
-                NewsListItem(article = article, onClick = {})
+                NewsListItem(article = article, onClick = onArticleClicked)
             }
         }
         when (news.loadState.append) {
@@ -80,6 +84,7 @@ fun NewsListContent(news: LazyPagingItems<ArticleItem>) {
                     }
                 }
             }
+
             is LoadState.Error -> {
                 item {
                     Card(
@@ -96,6 +101,7 @@ fun NewsListContent(news: LazyPagingItems<ArticleItem>) {
                     }
                 }
             }
+
             else -> {}
         }
 
@@ -105,6 +111,7 @@ fun NewsListContent(news: LazyPagingItems<ArticleItem>) {
                     LoadingContent(message = "Loading news...")
                 }
             }
+
             is LoadState.Error -> {
                 item {
                     Card(
@@ -132,6 +139,7 @@ fun NewsListContent(news: LazyPagingItems<ArticleItem>) {
                     }
                 }
             }
+
             else -> {}
         }
     }
